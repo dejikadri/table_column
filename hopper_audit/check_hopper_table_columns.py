@@ -1,17 +1,17 @@
+import time
+from db import db_conf as db
+
 import list_hopper_tables as ht
+connection = db.get_connection()
 
-table_columns = ht.table_column_dict()
+start_time = time.time()
 
-dict_table_with_empty_column = dict()
-for table, columns in table_columns.items():
-    for column in columns:
-        res = ht.check_if_column_empty(table, column)
-        if res == 0:
-            dict_table_with_empty_column[table] = column
-            print('Column', column, '--->', table, 'Is empty')
-        else:
-            pass
+dict_empty_columns = ht.get_table_column_dict(connection)
 
-print(dict_table_with_empty_column)
+end_time = int(round(time.time() * 1000))
+end_time = time.time()
 
+print(dict_empty_columns)
+print("Time: ", round((end_time - start_time) * 1000), "Milliseconds")
 
+db.close_connection(connection)
