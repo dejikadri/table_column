@@ -1,4 +1,4 @@
 .idea
 hopper-venv
 __pycache__
-db/__pycache__
+db

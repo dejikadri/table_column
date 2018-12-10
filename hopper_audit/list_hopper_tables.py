@@ -19,7 +19,14 @@ def get_table_list():
         lst_table_names.append(table[0])
 
     db.close_connection(connection, cursor)
+
+    # lst_less_table_names = [x for x in lst_table_names if 'book_' in x]
+    # return lst_less_table_names
+
+    # return ['facebook_page_insights_day']
     return lst_table_names
+
+print(len(get_table_list()), get_table_list())
 
 
 def get_table_columns(table_name):
@@ -68,9 +75,14 @@ def check_if_column_empty(table, column):
 
     connection = db.get_connection()
     cursor = connection.cursor()
-    sql_statement = f'select {column} from {table} order by {column} desc limit 1'
+    # sql_statement = f'select {column} from {table} where date_of_data > \'2018-12-01\' order by {column} desc limit 1'
+    # sql_statement = f'select {column} from {table} where date_of_data > \'2018-12-01\' and {column} <> \'\'  limit 1'
+    # sql_statement = f'select {column} from {table} where date_of_data > \'2018-12-01\' and {column} <> 0  limit 1'
+    sql_statement = f'select {column} from {table} where  {column} is null limit 1'
+    print(sql_statement)
     cursor.execute(sql_statement)
     column_value = cursor.fetchone()
+    print(column_value)
 
     if column_value:
         return 1
