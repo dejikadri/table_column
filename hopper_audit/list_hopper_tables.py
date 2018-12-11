@@ -13,9 +13,10 @@ def get_table_column_dict(connection):
     # Get list of all tables
     sql_statement = "SELECT distinct(table_name) FROM information_schema.tables WHERE table_schema='public'"
     cursor.execute(sql_statement)
-    table_names = cursor.fetchall()
-    # table_names = [('instagram_post',)]
-    # table_names = [('instagram_story',), ('instagram_post',), ('instagram_meta',), ('facebook_page_insights_day',)]
+    # table_names = cursor.fetchall()
+    table_names = [('facebook_page_insights_day',)]
+    # table_names = [('instagram_story',), ('instagram_post',), ('instagram_meta',),
+    # ('facebook_page_insights_day',)facebook_post_metadata_lifetime]
 
     for table in table_names:
 
@@ -65,8 +66,8 @@ def check_if_column_empty(table, column, connection):
     # sql_statement = f'select {column} from {table} where date_of_data > \'2018-12-01\' and {column} <> 0  limit 1'
     # sql_statement = f'select {column} from {table} where  {column} is not Null limit 1'
     # sql_statement = f'select {column} from {table} where  cast({column} as text) <> \'\' limit 1'
-    sql_statement = f'select {column} from {table} where  {column} :: varchar <> \'\' or {column} :: varchar <> \'0\' \
-                        or {column} :: varchar is not Null  limit 1'
+    sql_statement = f'select \"{column}\" from {table} where  \"{column}\" :: varchar <> \'\' or \"{column}\" :: varchar <> \'0\' \
+                        or \"{column}\" :: varchar is not Null  limit 1'
     # print(sql_statement)
     cursor.execute(sql_statement)
     column_value = cursor.fetchone()
