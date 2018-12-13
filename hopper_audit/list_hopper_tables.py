@@ -19,10 +19,6 @@ def get_table_column_dict(connection, table_list=None):
     else:
         table_names = cursor.fetchall()
 
-    # table_names = [('facebook_page_metadata_lifetime',)]
-    # table_names = [('instagram_story',), ('instagram_post',), ('instagram_meta',),
-    # ('facebook_page_insights_day',)facebook_post_metadata_lifetime]
-
     for table in table_names:
 
         # build a list of each tables columns
@@ -49,10 +45,6 @@ def get_table_column_dict(connection, table_list=None):
                 if empty_status == 0:
                     lst_of_columns.append(column)
                     dict_table_with_empty_column[table_key] = lst_of_columns
-                    # dict_table_with_empty_column.update({table_key: lst_of_columns})
-
-    # lst_less_table_names = [x for x in lst_table_names if 'book_' in x]
-    # return lst_less_table_names
 
     return dict_table_with_empty_column
 

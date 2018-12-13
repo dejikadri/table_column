@@ -9,6 +9,7 @@ passwd = os.getenv('REDSHIFT_PASS')
 host = os.getenv('REDSHIFT_HOST')
 db_name = os.getenv('DB_NAME')
 
+
 def get_connection():
     try:
         connection = psycopg2.connect(
