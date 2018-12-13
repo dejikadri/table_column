@@ -1,5 +1,6 @@
 import time
 import db_conf as db
+from pprint import pprint as pp
 
 import list_hopper_tables as ht
 
@@ -12,7 +13,7 @@ dict_empty_columns = ht.get_table_column_dict(connection, 'facebook_page_metadat
 end_time = int(round(time.time() * 1000))
 end_time = time.time()
 
-print(dict_empty_columns)
+pp(dict_empty_columns)
 print("Time: ", round((end_time - start_time) * 1000), "Milliseconds")
 
 db.close_connection(connection)
