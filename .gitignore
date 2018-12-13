@@ -1,5 +1,6 @@
 .idea
+.vscode
 hopper-venv
-__pycache__
+__pycache__/
 .env
 .DS_Store

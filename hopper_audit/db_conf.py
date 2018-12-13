@@ -1,17 +1,13 @@
 import os
-from os.path import join, dirname
+import psycopg2
 from dotenv import load_dotenv
 
-import psycopg2
-env_file_path = join(os.path.dirname(os.path.dirname(__file__)),'.env')
-load_dotenv(env_file_path)
-
+load_dotenv()
 
 user = os.getenv('REDSHIFT_USER')
 passwd = os.getenv('REDSHIFT_PASS')
 host = os.getenv('REDSHIFT_HOST')
-dbname = os.getenv('DBNAME')
-
+db_name = os.getenv('DB_NAME')
 
 def get_connection():
     try:
@@ -20,8 +16,9 @@ def get_connection():
             user=user,
             port=5439,
             password=passwd,
-            dbname=dbname
+            dbname=db_name
         )
+
         return connection
 
     except (Exception, psycopg2.Error) as error:

@@ -1,8 +1,7 @@
 import time
-from db import db_conf as db
+import db_conf as db
 
 import list_hopper_tables as ht
-
 
 connection = db.get_connection()
 

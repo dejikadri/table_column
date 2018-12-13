@@ -1,4 +1,4 @@
-from db import db_conf as db
+import db_conf as db
 
 
 def get_table_column_dict(connection, table_list=None):
