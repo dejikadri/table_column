@@ -96,8 +96,9 @@ def get_table_list(connection):
 
     # Get list of all tables
     sql_statement = "SELECT distinct(table_name) FROM information_schema.tables   \
-                        WHERE table_schema='public'  and (table_name like 'instagram_%' or  \
-                        table_name like '%facebook_%') and table_type='BASE TABLE'"
+                        WHERE table_schema='public'  and (table_name like 'instagram\\_%' or  \
+                            table_name like '%facebook\\_%' or table_name like '%jw\\_%')  \
+                               and table_type='BASE TABLE'"
 
     cursor.execute(sql_statement)
     table_names = cursor.fetchall()

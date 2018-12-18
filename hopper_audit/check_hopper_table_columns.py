@@ -7,7 +7,7 @@ connection = db.get_connection()
 
 start_time = time.time()
 
-dict_empty_columns = ht.get_table_column_dict(connection, ['facebook_post_metrics'])
+dict_empty_columns = ht.get_table_column_dict(connection)
 end_time = int(round(time.time() * 1000))
 end_time = time.time()
 
